@@ -9,9 +9,8 @@ A block element is composed of 3 files:
 
 ---
 
-### `form.config.json`
+### form.config.json
 
-<br />
 The `form.config.json` file is used to generate the form in the editor. It is composed of an array of objects, each object representing a type of input in the form.
 
 For every field, the `name` key will allow you to access the data in the twig component.
@@ -70,7 +69,7 @@ The value is a string representing the number of columns the field should take i
 The value should be between 1 and 12, as the layout is based on a 12 width grid.<br />
 This key is available on every field type.
 
-### Field list and their corresponding schema
+### Field types
 
 #### Text
 
@@ -312,9 +311,8 @@ Repeatables are not meant to be nested, and therefor can't be used inside anothe
 ---
 
 
-### `module.html.twig`
+### module.html.twig
 
-<br />
 The `module.html.twig` file is used to render the module on the front of your site.<br />
 
 The templating is handled by the [Twig](https://twig.symfony.com/) templating engine.<br />
@@ -361,7 +359,7 @@ The `data-module` attribute on your first section can be used to scope your styl
 
 ---
 
-### `screenshot.png`
+### screenshot.png
 
 <br />
 Pretty self explanatory, this file is used to display a preview of your module in the editor, in the block list.<br />
