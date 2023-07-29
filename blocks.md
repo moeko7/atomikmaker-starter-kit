@@ -50,7 +50,7 @@ i.e. :
 ```
 
 Render:<br />
-![img.png](assets/img/.png)
+![img.png](assets/img/img.png)
 
 Every field object has the following base schema, every key in red is required, the rest is optional.
 <pre>
