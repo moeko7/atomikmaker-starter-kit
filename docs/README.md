@@ -406,7 +406,7 @@ Example:
 <script></script>
 ```
 
-In most case, you need to use a wrapper has first and unique child of the section with the `data-module` attribute. Add the `block-wrapper` on it apply common style. See example just below:<br />
+In most cases, you need to use a wrapper as first and unique child of the section with the `data-module` attribute. Add the `block-wrapper` class on it to apply common style. See example just below:<br />
 
 ```css
 .block-wrapper {
@@ -417,7 +417,7 @@ In most case, you need to use a wrapper has first and unique child of the sectio
 }
 ```
 As you can see, we use css variables to apply common style. Please don't modify any css variable, it can break the design of the platform.<br /> 
-The only one you can modify in your css is `--block-width` to change the max-width of your block **only if needed**. In most case, you'll don't need to set this variable. <br />
+The only one you can modify in your css is `--block-width` to change the max-width of your block **only if needed**. In most cases, you won't need to set this variable. <br />
 
 
 ---
@@ -432,7 +432,7 @@ For best results, it is advised to use a 16/9 aspect ratio image.<br />
 
 # Styling
 
-For styling your modules, you have access to some css variables and someone are exposed with css classes.<br />
+To style your modules, you have access to some css variables and some are exposed with css classes.<br />
 
 > You can see the common css in the `css/module.scss` file.
 
@@ -440,8 +440,8 @@ For styling your modules, you have access to some css variables and someone are 
 
 ## Typography
 
-For typography styling, you have access to some css variables and class.<br />
-For most text element, **please use the css text class** to harmonize the style of all text in the platform.<br />
+For typography styling, you have access to some css variables and classes.<br />
+For most text element, **please use the css class** `text` to harmonize the style of all text in the platform.<br />
 
 > **Information**: By default, 1rem is set to 10px to simplify rem/em calculation. On the body element, the font-size is set to 1.6rem (16px) and all text tag (p,li,h1,h2,h3,...) font-size are set to `inherit`.
 
@@ -528,7 +528,7 @@ All the css variables are exposed with css classes except for list marker color.
 | .clr-text-light   | color: var(--clr-text-light);   |
 | .clr-text-lighter | color: var(--clr-text-lighter); |
 
-This classes exist for background too.
+Those classes exist for background too.
 
 | Class name           | Render                                     |
 |----------------------|--------------------------------------------|
