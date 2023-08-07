@@ -1,0 +1,93 @@
+[
+  {
+    "label": "Compte global",
+    "name": "global_count",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Label du compte global",
+    "name": "global_label",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Compte 1",
+    "name": "count_1",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Label du compte 1",
+    "name": "label_count_1",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Compte 2",
+    "name": "count_2",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Label du compte 2",
+    "name": "label_count_2",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Compte 3",
+    "name": "count_3",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Label du compte 3",
+    "name": "label_count_3",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Compte 4",
+    "name": "count_4",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Label du compte 4",
+    "name": "label_count_4",
+    "type": "text",
+    "update": "content",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  }
+]

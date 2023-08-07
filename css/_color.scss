@@ -1,0 +1,34 @@
+:root{
+    // ******************** //
+    // COLORS VARIABLES
+    // ******************** //
+    --clr-main: #FFFFFF;
+    --clr-primary: #1F4E84;
+    --clr-secondary: #EEF4FB;
+    --clr-text-darker: #060F19;
+    --clr-text-dark: #0F243E;
+    --clr-text-midtone: #8C96A1;
+    --clr-text-light: #EEF4FB;
+    --clr-text-lighter: #FFFFFF;
+    --clr-list-marker: var(--clr-primary);
+}
+
+// COLOR CLASS
+.clr-main{ color: var(--clr-main); }
+.clr-primary{ color: var(--clr-primary); }
+.clr-secondary{ color: var(--clr-secondary); }
+.clr-text-darker{ color: var(--clr-text-darker); }
+.clr-text-dark{ color: var(--clr-text-dark); }
+.clr-text-midtone{ color: var(--clr-text-midtone); }
+.clr-text-light{ color: var(--clr-text-light); }
+.clr-text-lighter{ color: var(--clr-text-lighter); }
+
+// BACKGROUND COLOR CLASS
+.bg-clr-main{ background-color: var(--clr-main); }
+.bg-clr-primary{ background-color: var(--clr-primary); }
+.bg-clr-secondary{ background-color: var(--clr-secondary); }
+.bg-clr-text-darker{ background-color: var(--clr-text-darker); }
+.bg-clr-text-dark{ background-color: var(--clr-text-dark); }
+.bg-clr-text-midtone{ background-color: var(--clr-text-midtone); }
+.bg-clr-text-light{ background-color: var(--clr-text-light); }
+.bg-clr-text-lighter{ background-color: var(--clr-text-lighter); }

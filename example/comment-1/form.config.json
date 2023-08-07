@@ -1,0 +1,55 @@
+[
+  {
+    "label": "Repeatable",
+    "name": "repeatable",
+    "type": "repeatable",
+    "required": true,
+    "schema": [
+      {
+        "label": "Témoignage",
+        "name": "testimony",
+        "type": "editor",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      },
+      {
+        "label": "Fichier",
+        "name": "file",
+        "type": "file",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      },
+      {
+        "label": "Nom",
+        "name": "name",
+        "type": "text",
+        "required": true,
+        "design": {
+          "col": "6"
+        }
+      },
+      {
+        "label": "Compagnie",
+        "name": "company",
+        "type": "text",
+        "required": true,
+        "design": {
+          "col": "6"
+        }
+      },
+      {
+        "label": "Poste",
+        "name": "poste",
+        "type": "text",
+        "required": true,
+        "design": {
+          "col": "6"
+        }
+      }
+    ]
+  }
+]

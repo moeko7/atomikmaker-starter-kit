@@ -1,0 +1,102 @@
+[
+  {
+    "label": "Titre",
+    "name": "title",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Type",
+    "name": "type",
+    "type": "select",
+    "required": true,
+    "default": "h2",
+    "options": [
+      {"value":"h1","label":"H1"},
+      {"value":"h2","label":"H2"},
+      {"value":"h3","label":"H3"},
+      {"value":"h4","label":"H4"},
+      {"value":"h4","label":"H4"},
+      {"value":"h5","label":"H5"},
+      {"value":"h6","label":"H6"}
+    ],
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Accorche",
+    "name": "tagline",
+    "type": "text",
+    "required": false,
+    "design": {
+      "col": "12"
+    }
+  },
+  {
+    "label": "Paragraphe",
+    "type": "editor",
+    "name": "paragraph",
+    "required": true,
+    "design": {
+      "col": "12"
+    }
+  },
+  {
+    "label": "Element",
+    "type": "repeatable",
+    "name": "repeatable",
+    "required": true,
+    "schema": [
+      {
+        "label": "Fichier",
+        "type": "file",
+        "name": "file",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      },
+      {
+        "label": "Titre",
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "design": {
+          "col": "6"
+        }
+      },
+      {
+        "label": "Type",
+        "name": "type",
+        "type": "select",
+        "required": true,
+        "default": "h3",
+        "options": [
+          {"value":"h1","label":"H1"},
+          {"value":"h2","label":"H2"},
+          {"value":"h3","label":"H3"},
+          {"value":"h4","label":"H4"},
+          {"value":"h4","label":"H4"},
+          {"value":"h5","label":"H5"},
+          {"value":"h6","label":"H6"}
+        ],
+        "design": {
+          "col": "6"
+        }
+      },
+      {
+        "label": "Sous-titre",
+        "type": "text",
+        "name": "subtitle",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      }
+    ]
+  }
+]

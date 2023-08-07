@@ -1,0 +1,43 @@
+<style>
+    [data-module="{{ id }}"] { background-image: linear-gradient(90deg, var(--clr-main) calc(50% + 1px), var(--clr-primary) calc(50% + 1px)); }
+    [data-module="{{ id }}"] .block-wrapper .content-container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        align-items: flex-start;
+        padding: 8% 10%;
+        background-color: var(--clr-main);
+    }
+    [data-module="{{ id }}"] .block-wrapper .content-container .heading-lv1 { word-break: break-word; }
+    [data-module="{{ id }}"] .block-wrapper .content-container .content-separator {
+        display: block;
+        width: max(60px, 20%);
+        height: 2px;
+        background-color: var(--clr-text-darker);
+    }
+
+    @media (min-width: 60rem){
+        [data-module="{{ id }}"] .block-wrapper{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            width: 100%;
+        }
+        [data-module="{{ id }}"] .block-wrapper .content-container{
+            padding: 4% 40px;
+            max-width: 650px;
+            justify-self: end;
+        }
+    }
+</style>
+<section data-module="{{ id }}" data-reveal>
+    <div class="block-wrapper">
+        <div class="content-container">
+            <{{ content.type }} class="heading-lv1" data-reveal-animation="from-bottom">{{ content.title }}</{{ content.type }}>
+            <span class="content-separator" data-reveal-animation="from-bottom" style="--reveal-delay: .1s"></span>
+            <div class="text-body" data-reveal-animation="from-bottom" style="--reveal-delay: .2s">{{ content.description|raw }}</div>
+            <a href="{{ content.btn.link }}" data-reveal-animation="from-bottom" style="--reveal-delay: .3s" target="{{ content.btn.target is defined and content.btn.target == "on" ? '_blank' : "_self" }}" class="btn">{{ content.btn.label }}</a>
+        </div>
+    </div>
+</section>
+<script></script>

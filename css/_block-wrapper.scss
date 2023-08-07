@@ -1,0 +1,11 @@
+:root{
+    --wrapper-max-width: 1280px;
+    --block-padding-inline: clamp(20px, 4vw, 40px);
+    --block-padding-block: 100px;
+}
+.block-wrapper{
+    padding-inline: var(--block-padding-inline);
+    padding-block: var(--block-padding-block);
+    max-width: min(var(--block-width, var(--wrapper-max-width)), var(--wrapper-max-width));
+    margin-inline: auto;
+}

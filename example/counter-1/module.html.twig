@@ -1,0 +1,111 @@
+<style>
+    [data-module="{{ id }}"] .counter-left-container {
+        padding-bottom: 70px;
+        border-bottom: 1px solid var(--clr-text-darker);
+    }
+    [data-module="{{ id }}"] .counter-left-container .counter-count {
+        font-size: 10rem;
+        margin-bottom: 10px;
+        color: var(--clr-primary);
+    }
+    [data-module="{{ id }}"] .counter-left-container .counter-title {
+        font-size: 3rem;
+        line-height: 1em;
+        max-width: 17ch;
+    }
+    [data-module="{{ id }}"] .counter-right-container {
+        padding-block: 40px;
+    }
+    [data-module="{{ id }}"] .counter-right-container .counter-detail-container {
+        text-align: center;
+        padding-block: 40px;
+        padding-inline: 20px;
+    }
+    [data-module="{{ id }}"] .counter-right-container .counter-detail-container .counter-detail-count {
+        font-size: 6rem;
+        line-height: 6rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+    [data-module="{{ id }}"] .counter-right-container .counter-detail-container .counter-detail-label {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--clr-text-midtone);
+    }
+    @media (min-width: 35rem) {
+        [data-module="{{ id }}"] .block-wrapper .counter-right-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 45rem) {
+        [data-module="{{ id }}"] .block-wrapper .counter-left-container .counter-count {
+            font-size: 15rem;
+            line-height: 15rem;
+        }
+        [data-module="{{ id }}"] .block-wrapper .counter-left-container .counter-title {
+            font-size: 4rem;
+        }
+    }
+    @media (min-width: 60rem) {
+        [data-module="{{ id }}"] .block-wrapper {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        [data-module="{{ id }}"] .block-wrapper .counter-left-container {
+            border-right: 1px solid var(--clr-text-darker);
+            border-bottom: none;
+        }
+    }
+</style>
+<section data-module="{{ id }}" data-reveal>
+    <div class="block-wrapper">
+        <div class="counter-left-container">
+            {% if content['global_count'] is defined and content['global_count'] is not empty %}
+                <p class="counter-count heading-lv1" data-reveal-animation="from-bottom">{{ content['global_count'] }}</p>
+            {% endif %}
+            {% if content['global_label'] is defined and content['global_label'] is not empty %}
+                <h2 class="counter-title heading-lv1" data-reveal-animation="from-right" style="--reveal-delay: .3s">{{ content['global_label'] }}</h2>
+            {% endif %}
+        </div>
+        <div class="counter-right-container">
+            <div class="counter-detail-container">
+                {% if content['count_1'] is defined and content['count_1'] is not empty %}
+                    <p class="counter-detail-count heading-lv1" data-reveal-animation="from-bottom">{{ content['count_1'] }}</p>
+                {% endif %}
+                {% if content['label_count_1'] is defined and content['label_count_1'] is not empty %}
+                    <p class="counter-detail-label" data-reveal-animation="from-bottom" style="--reveal-delay: .15s">{{ content['label_count_1'] }}</p>
+                {% endif %}
+            </div>
+
+            <div class="counter-detail-container">
+                {% if content['count_2'] is defined and content['count_2'] is not empty %}
+                    <p class="counter-detail-count heading-lv1" data-reveal-animation="from-bottom">{{ content['count_2'] }}</p>
+                {% endif %}
+                {% if content['label_count_2'] is defined and content['label_count_2'] is not empty %}
+                    <p class="counter-detail-label" data-reveal-animation="from-bottom" style="--reveal-delay: .15s">{{ content['label_count_2'] }}</p>
+                {% endif %}
+            </div>
+
+            <div class="counter-detail-container">
+                {% if content['count_3'] is defined and content['count_3'] is not empty %}
+                    <p class="counter-detail-count heading-lv1" data-reveal-animation="from-bottom">{{ content['count_3'] }}</p>
+                {% endif %}
+                {% if content['label_count_3'] is defined and content['label_count_3'] is not empty %}
+                    <p class="counter-detail-label" data-reveal-animation="from-bottom" style="--reveal-delay: .15s">{{ content['label_count_3'] }}</p>
+                {% endif %}
+            </div>
+
+            <div class="counter-detail-container">
+                {% if content['count_4'] is defined and content['count_4'] is not empty %}
+                    <p class="counter-detail-count heading-lv1" data-reveal-animation="from-bottom">{{ content['count_4'] }}</p>
+                {% endif %}
+                {% if content['label_count_4'] is defined and content['label_count_4'] is not empty %}
+                    <p class="counter-detail-label" data-reveal-animation="from-bottom" style="--reveal-delay: .15s">{{ content['label_count_4'] }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<script></script>

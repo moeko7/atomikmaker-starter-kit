@@ -1,0 +1,187 @@
+<style>
+    [data-module="{{ id }}"] .block-wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 20px;
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-arrow {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-content: center;
+        font-size: 3rem;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        opacity: 0;
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-arrow[data-arrow="next"] {
+        transform: translateX(min(0px + var(--block-padding-inline), 30px));
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-arrow[data-arrow="prev"] {
+        transform: translateX(min(0px - var(--block-padding-inline), 30px));
+    }
+    [data-module="{{ id }}"] .block-wrapper:hover .comment-arrow {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-dots-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        grid-column: span 3;
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-dots-wrapper .comment-dot {
+        display: block;
+        width: 7px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: var(--clr-text-midtone);
+        cursor: pointer;
+    }
+    [data-module="{{ id }}"] .block-wrapper .comment-dots-wrapper .comment-dot.active {
+        background-color: var(--clr-text-darker);
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper {
+        overflow: hidden;
+        padding-block: 40px;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-container {
+        display: flex;
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item {
+        width: 100%;
+        flex-shrink: 0;
+        text-align: center;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item .comment-content-item-testimonial {
+        max-width: 60ch;
+        margin-inline: auto;
+        margin-bottom: 50px;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item .comment-content-item-picture {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item .comment-content-item-company-infos {
+        display: inline-flex;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+        text-transform: uppercase;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item .comment-content-item-company-infos .comment-content-item-company-post {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+    }
+    [data-module="{{ id }}"] .comment-content-wrapper .comment-content-item .comment-content-item-company-infos .comment-content-item-company-post:not(:first-child):before {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 2px;
+        background-color: currentColor;
+    }
+</style>
+<section data-module="{{ id }}" data-reveal>
+    <div class="block-wrapper">
+        {% if content['repeatable'] is defined and content['repeatable']|length > 1 %}
+            <i class="comment-arrow fa-solid fa-angle-left" data-arrow="prev"></i>
+        {% else %}
+            <i></i>
+        {% endif %}
+        <div class="comment-content-wrapper" data-reveal-animation="scale-up">
+            <div class="comment-content-container" data-carousel-container style="transform: translateX(-0%);">
+                {% if content['repeatable'] is defined and content['repeatable'] is not empty %}
+                    {% for card in content['repeatable'] %}
+                        <article class="comment-content-item">
+                            <div class="comment-content-item-testimonial text-body">
+                                {% if card['testimony'] is not empty %}
+                                    {{ card['testimony'] |raw }}
+                                {% endif %}
+                            </div>
+                            {% if card['file'] is defined and card['file'] is not empty %}
+                                <img class="comment-content-item-picture"
+                                     src="{{ basePathMedia }}{{ (card['file']) }}" alt="">
+                            {% endif %}
+                            {% if card['name'] is defined and card['name'] is not empty %}
+                                <p class="comment-content-item-author text-body">{{ card['name'] }}</p>
+                            {% endif %}
+                            <div class="comment-content-item-company-infos text-caption">
+                                {% if card['company'] is defined and card['company'] is not empty %}
+                                    <p class="comment-content-item-company-name">{{ card['company'] }}</p>
+                                {% endif %}
+                                {% if card['poste'] is defined and card['poste'] is not empty %}
+                                    <p class="comment-content-item-company-post">{{ card['poste'] }}</p>
+                                {% endif %}
+                            </div>
+                        </article>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% if content['repeatable'] is defined and content['repeatable']|length > 1 %}
+            <i class="comment-arrow fa-solid fa-angle-right" data-arrow="next"></i>
+            <div class="comment-dots-wrapper">
+                {% for i in range(1, content['repeatable']|length) %}
+                    <span class="comment-dot {% if i == 1 %}active{% endif %}" data-carousel-dot-step="{{ loop.index0 }}"></span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <i></i>
+        {% endif %}
+    </div>
+</section>
+{% if content['repeatable'] is defined and content['repeatable']|length > 1 %}
+    <script>
+        const module = document.querySelector(`[data-module="{{ id }}"]`);
+        const dots = module.querySelectorAll('.comment-dot');
+        const max = dots.length - 1;
+        const prevBtn = module.querySelector('[data-arrow="prev"]');
+        const nextBtn = module.querySelector('[data-arrow="next"]');
+        const carouselContainer = module.querySelector('[data-carousel-container]');
+        let step = 0;
+
+        prevBtn.addEventListener("click", e => {
+            step = step === 0 ? max : step - 1;
+            switchSlide();
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[step].classList.add('active');
+        })
+
+        nextBtn.addEventListener("click", e => {
+            step = step === max ? 0 : step + 1;
+            switchSlide();
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[step].classList.add('active');
+        })
+
+        dots.forEach(dot => {
+            dot.addEventListener("click", e => {
+                step = parseInt(e.target.dataset.carouselDotStep);
+                switchSlide();
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[step].classList.add('active');
+            })
+        })
+
+        function switchSlide(){
+            carouselContainer.style.opacity = 0;
+            setTimeout(() => {
+                carouselContainer.style.transform = `translateX(-${step * 100}%) translateY(20px)`;
+                setTimeout(() => {
+                    carouselContainer.style.opacity = 1;
+                    carouselContainer.style.transform = `translateX(-${step * 100}%)`;
+                }, 400)
+            }, 400);
+        }
+    </script>
+{% else %}
+    <script></script>
+{% endif %}

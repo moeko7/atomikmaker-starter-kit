@@ -1,0 +1,72 @@
+<style>
+    [data-module="{{ id }}"] .card-header .card-header-title-container {
+        margin-bottom: 20px;
+    }
+    [data-module="{{ id }}"] .card-header .card-header-title-container .card-header-tagline {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+    [data-module="{{ id }}"] .card-elements-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        row-gap: 60px;
+        column-gap: 20px;
+        margin-top: 50px;
+    }
+    [data-module="{{ id }}"] .card-elements-container .card-element-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    [data-module="{{ id }}"] .card-elements-container .card-element-wrapper .card-element-image {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+    }
+    [data-module="{{ id }}"] .card-elements-container .card-element-wrapper .card-element-legend {
+        color: var(--clr-primary);
+    }
+    [data-module="{{ id }}"] .card-elements-container .card-element-wrapper .card-element-title {
+        display: flex;
+        align-items: flex-start;
+    }
+    @media (min-width: 60rem) {
+        [data-module="{{ id }}"] .card-header {
+            display: flex;
+            gap: 20px;
+        }
+        [data-module="{{ id }}"] .card-header .card-header-title-container {
+            flex: 1;
+            max-width: min(25%, 400px);
+        }
+        [data-module="{{ id }}"] .card-header .card-header-description {
+            flex: 1;
+        }
+    }
+
+</style>
+<section data-module="{{ id }}" data-reveal>
+    <div class="block-wrapper">
+        <div class="card-header">
+            <div class="card-header-title-container">
+                {% if content.tagline is defined and content.tagline is not empty %}
+                    <p class="card-header-tagline text-caption" data-reveal-animation="from-bottom">{{ content.tagline }}</p>
+                {% endif %}
+                <{{ content.type }} class="card-header-title heading-lv1" data-reveal-animation="from-bottom" style="--reveal-delay: .1s">{{ content.title }}</{{ content.type }}>
+            </div>
+            <div class="card-header-description text-body" data-reveal-animation="from-bottom" style="--reveal-delay: .2s">{{ content.paragraph|raw }}</div>
+        </div>
+        <div class="card-elements-container">
+            {% if content.repeatable is defined and content.repeatable|length > 0 %}
+                {% for card in content.repeatable %}
+                    <div class="card-element-wrapper" data-reveal-animation="scale-up" style="--reveal-delay: {{ loop.index0 * 100 }}ms">
+                        <img class="card-element-image" src="{{ basePathMedia }}{{ card.file }}" alt="">
+                        <p class="card-element-legend text-caption">{{ card.subtitle }}</p>
+                        <p class="card-element-title heading-lv2">{{ card.title }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+<script></script>

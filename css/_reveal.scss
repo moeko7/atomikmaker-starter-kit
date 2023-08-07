@@ -1,0 +1,69 @@
+:root{
+    --reveal-bezier: cubic-bezier(.4, .15, .5, 1);
+    --reveal-duration: 1s
+}
+
+@media (prefers-reduced-motion: no-preference){
+    .js-enable{
+
+        [data-reveal]{
+            [data-reveal-animation="from-bottom"]{
+                transform: translateY(30px) !important;
+                opacity: 0 !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="from-top"]{
+                transform: translateY(-30px) !important;
+                opacity: 0 !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="from-left"]{
+                transform: translateX(-30px) !important;
+                opacity: 0 !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="from-right"]{
+                transform: translateX(30px) !important;
+                opacity: 0 !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="opacity"]{
+                opacity: 0 !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="scale-up"]{
+                opacity: 0 !important;
+                transform: scale(var(--reveal-scale, 0.9)) !important;
+                transition: 0s !important;
+            }
+            [data-reveal-animation="scale-down"]{
+                opacity: 0 !important;
+                transform: scale(var(--reveal-scale, 1.1)) !important;
+                transition: 0s !important;
+            }
+        }
+
+        [data-reveal-animation="from-bottom"],
+        [data-reveal-animation="from-top"],
+        [data-reveal-animation="from-left"],
+        [data-reveal-animation="from-right"]{
+            transition: opacity var(--reveal-duration) var(--reveal-bezier),
+                transform var(--reveal-duration) var(--reveal-bezier);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+        [data-reveal-animation="opacity"]{
+            transition: opacity var(--reveal-duration) var(--reveal-bezier);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+        [data-reveal-animation="scale-up"]{
+            transition: opacity var(--reveal-duration) var(--reveal-bezier),
+                transform var(--reveal-duration) var(--reveal-bezier);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+        [data-reveal-animation="scale-down"]{
+            transition: opacity var(--reveal-duration) var(--reveal-bezier),
+                transform var(--reveal-duration) var(--reveal-bezier);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+    }
+}

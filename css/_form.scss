@@ -1,0 +1,191 @@
+:root{
+    // ******************** //
+    // FORM VARIABLES
+    // ******************** //
+    // Form group
+    --form-group-padding-block: 1.5rem;
+
+    // Form control
+    --input-padding-inline: 1.5rem;
+    --input-padding-block: 1.5rem;
+    --input-fs: var(--fs-body);
+    --input-border-width: 1px;
+    --input-border-clr: var(--clr-text-darker);
+    --input-radius: var(--radius);
+    --input-background-clr: var(--clr-main);
+    --input-text-clr: var(--clr-text-darker);
+    --input-placeholder-clr: hsl(0, 0%, 50%);
+    --input-outline: 1px solid var(--clr-text-darker);
+    --input-outline-offset: 0;
+    --input-font-family: var(--ff-secondary);
+
+    // Form error
+    --input-clr-error: #b40d0d;
+    --input-border-clr-error: var(--input-clr-error);
+    --input-border-width-error: max(var(--input-border-width), 1px);
+    --input-fs-error: var(--fs-sm);
+    --input-margin-top-error: 0.8rem;
+
+    // Form select multiple
+    --input-select-multiple-clr-background-selected: var(--clr-primary);
+    --input-select-multiple-clr-selected: var(--clr-text-lighter);
+
+    // Form checkbox
+    --checkbox-check-size: 2rem;
+    --checkbox-check-radius: var(--radius);
+    --checkbox-check-border-clr: var(--clr-text-darker);
+    --checkbox-check-border-width: 1px;
+    --checkbox-check-clr-background: #fff;
+    --checkbox-check-font-size: 1.4rem;
+    --checkbox-check-checked-clr-background: var(--clr-primary);
+    --checkbox-check-checked-border-clr: transparent;
+    --checkbox-label-font-size: var(--fs-body);
+    --checkbox-label-font-weight: 400;
+
+    // Form textarea
+    --textarea-default-height: 100px;
+}
+
+:where(form){
+    width: 100%;
+
+    :where(.form-label){
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    :where(.form-group){
+        display: flex;
+        flex-direction: column;
+        padding-block: var(--form-group-padding-block);
+        width: 100%;
+
+        &:where(.form-text, .form-email, .form-password, .form-number, .form-phone, .form-select, .form-textarea){
+            :where(.form-control){
+                width: 100%;
+                min-width: 250px;
+                font-size: var(--input-fs);
+                font-family: var(--input-font-family);
+                padding: var(--input-padding-block) var(--input-padding-inline);
+                border: var(--input-border-width) solid var(--input-border-clr);
+                border-radius: var(--input-radius);
+                background-color: var(--input-background-clr);
+                outline: none;
+                &:focus{
+                    outline: var(--input-outline);
+                    outline-offset: var(--input-outline-offset);
+                }
+                &::placeholder, &:where([data-empty]){
+                    color: var(--input-placeholder-clr);
+                }
+            }
+            &:where([data-error]) :where(.form-control){
+                border: var(--input-border-width-error) solid var(--input-border-clr-error);
+                &:focus{ outline-color: var(--input-border-clr-error); }
+            }
+        }
+
+        :where(.form-error){
+            padding-left: var(--input-padding-inline);
+            margin-top: var(--input-margin-top-error);
+            color: var(--input-clr-error);
+            font-size: var(--input-fs-error);
+            &:empty{ display: none; }
+        }
+
+        :where(.form-select .form-control){
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+            background-position: calc(100% - 0.75rem) center !important;
+            -moz-appearance:none !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            padding-right: 2rem !important;
+        }
+
+        &:where(.form-checkbox){
+            position: relative;
+
+            :where(.form-label){
+                display: inline-flex;
+                gap: 10px;
+                align-items: baseline;
+                margin-bottom: 0;
+                cursor: pointer;
+            }
+            :where(.form-checkbox-square){
+                flex-shrink: 0;
+                display: grid;
+                place-content: center;
+                width: var(--fs-md);
+                aspect-ratio: 1;
+                border-radius: var(--checkbox-check-radius);
+                background-color: var(--checkbox-check-clr-background);
+                border: var(--checkbox-check-border-width) solid var(--checkbox-check-border-clr);
+                color: transparent;
+                font-size: var(--checkbox-check-font-size);
+                transform: translateY(-2px);
+            }
+            :where(.form-control){
+                width: var(--checkbox-check-size);
+                height: var(--checkbox-check-size);
+                opacity: 0;
+                z-index: -1;
+                position: absolute;
+                top: calc(var(--form-group-padding-block) + 2px);
+                left: 2px;
+                outline: var(--input-outline);
+                outline-offset: var(--input-outline-offset);
+            }
+            :where(.form-control:focus + .form-label .form-checkbox-square){
+                outline: var(--input-outline);
+                outline-offset: var(--input-outline-offset);
+            }
+            :where(.form-control:checked + .form-label .form-checkbox-square){
+                color: var(--clr-text-lighter);
+                background-color: var(--checkbox-check-checked-clr-background);
+                border-color: var(--checkbox-check-checked-border-clr);
+            }
+            :where(.form-error){
+                margin-top: 5px;
+                padding-left: calc(var(--checkbox-check-size) + 10px);
+            }
+        }
+
+        &:where(.form-textarea){
+            :where(.form-control){
+                resize: vertical;
+                height: var(--textarea-default-height);
+            }
+        }
+    }
+
+    :where([type="submit"]){
+        margin-top: var(--form-group-padding-block);
+    }
+
+    :where(.form-select-multiple-wrapper){
+        width: 100%;
+        padding-block: var(--form-group-padding-block);
+        :where(.form-group){
+            padding-block: 0;
+            :where(.form-label){ margin-bottom: 0; }
+        }
+
+        :where(.form-select-multiple-choices-container){
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+
+    :where(.form-auto-layout){
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: calc(var(--form-group-padding-block) * 2);
+        :where(.form-group){
+            flex: 1;
+        }
+    }
+}

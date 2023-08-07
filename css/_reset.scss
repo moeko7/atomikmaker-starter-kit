@@ -1,0 +1,24 @@
+:root{ font-size: 10px; }
+*, *::before, *::after{ box-sizing: border-box !important; margin: 0; padding: 0; }
+
+body{
+    font-family: var(--ff-secondary);
+    color: var(--clr-text-darker);
+    background-color: var(--clr-main);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-body);
+    letter-spacing: var(--ls-body);
+    line-height: var(--lh-body);
+}
+:where(.hidden){ display: block; overflow: hidden; width: 0; height: 0; }
+:where(.d-none){ display: none; }
+:where(button){ all: unset; }
+:where(img){ width: 100%; }
+
+:where(h1, h2, h3, h4, h5, h6, li){
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+}

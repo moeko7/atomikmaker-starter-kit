@@ -1,0 +1,47 @@
+[
+  {
+    "label": "Titre",
+    "name": "title",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Type",
+    "name": "type",
+    "type": "select",
+    "required": true,
+    "options": [
+      {"value":"h1","label":"H1"},
+      {"value":"h2","label":"H2"},
+      {"value":"h3","label":"H3"},
+      {"value":"h4","label":"H4"},
+      {"value":"h4","label":"H4"},
+      {"value":"h5","label":"H5"},
+      {"value":"h6","label":"H6"}
+    ],
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Description",
+    "name": "description",
+    "type": "editor",
+    "required": true,
+    "design": {
+      "col": "12"
+    }
+  },
+  {
+    "label": "Bouton",
+    "name": "btn",
+    "type": "btn",
+    "required": true,
+    "design": {
+      "col": "12"
+    }
+  }
+]

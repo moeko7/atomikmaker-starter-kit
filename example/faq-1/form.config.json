@@ -1,0 +1,68 @@
+[
+  {
+    "label": "Titre",
+    "name": "title",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Type",
+    "name": "type",
+    "type": "select",
+    "required": true,
+    "default": "h2",
+    "options": [
+      {"value":"h1","label":"H1"},
+      {"value":"h2","label":"H2"},
+      {"value":"h3","label":"H3"},
+      {"value":"h4","label":"H4"},
+      {"value":"h4","label":"H4"},
+      {"value":"h5","label":"H5"},
+      {"value":"h6","label":"H6"}
+    ],
+    "design": {
+      "col": "6"
+    }
+  },
+  {
+    "label": "Sous-titre",
+    "name": "subtitle",
+    "type": "text",
+    "required": true,
+    "design": {
+      "col": "12"
+    }
+  },
+  {
+    "label": "Éléments",
+    "name": "repeatable",
+    "type": "repeatable",
+    "required": true,
+    "schema": [
+      {
+        "label": "Question",
+        "name": "question",
+        "type": "text",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      },
+      {
+        "label": "Réponse",
+        "type": "text",
+        "name": "reponse",
+        "required": true,
+        "design": {
+          "col": "12"
+        }
+      }
+    ],
+    "design": {
+      "col": "12"
+    }
+  }
+]

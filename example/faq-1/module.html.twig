@@ -1,0 +1,42 @@
+<style>
+    [data-module="{{ id }}"] .faq-1-header {
+        margin-bottom: 30px;
+    }
+    [data-module="{{ id }}"] .faq-1-header .faq-1-header-subtitle {
+        margin-top: 1em;
+    }
+    [data-module="{{ id }}"] .faq-1-question-item-container {
+        margin-bottom: 30px;
+    }
+    [data-module="{{ id }}"] .faq-1-question-item-container .faq-1-question-item-question {
+        margin-bottom: 10px;
+    }
+    @media (min-width: 60rem) {
+        [data-module="{{ id }}"] .block-wrapper {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: minmax(250px, 1fr) 2fr;
+        }
+    }
+</style>
+<section data-module="{{ id }}" data-reveal>
+    <div class="block-wrapper">
+        <div class="faq-1-header">
+            <{{ content.type }} class="faq-1-header-title heading-lv1" data-reveal-animation="from-right">{{ content.title }}</{{ content.type }}>
+            <p class="faq-1-header-subtitle text-caption" data-reveal-animation="from-right" style="--reveal-delay: .2s">{{ content.subtitle }}</p>
+        </div>
+        <div class="faq-1-questions-wrapper">
+            <div class="faq-1-questions-wrapper">
+            {% if content.repeatable is defined %}
+                {% for item in content.repeatable %}
+                    <div class="faq-1-question-item-container">
+                        <p class="faq-1-question-item-question heading-lv2" data-reveal-animation="from-bottom" style="--reveal-delay: {{ loop.index0 * 100 }}ms">{{ item.question }}</p>
+                        <p class="faq-1-question-item-answer text-body" data-reveal-animation="from-bottom" style="--reveal-delay: {{ loop.index0 * 200 }}ms">{{ item.reponse }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<script></script>
